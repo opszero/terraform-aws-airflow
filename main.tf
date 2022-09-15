@@ -1,4 +1,4 @@
-resource "aws_mwaa_environment" "example" {
+resource "aws_mwaa_environment" "this" {
   name = var.name
 
 #   network_configuration {
