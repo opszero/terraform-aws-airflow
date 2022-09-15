@@ -1,10 +1,10 @@
 resource "aws_mwaa_environment" "this" {
   name = var.name
 
-#   network_configuration {
-#     security_group_ids = [aws_security_group.example.id]
-#     subnet_ids         = aws_subnet.private[*].id
-#   }
+  network_configuration {
+    security_group_ids = var.security_group_ids
+    subnet_ids         = var.subnet_ids
+  }
 
 #   source_bucket_arn = aws_s3_bucket.example.arn
 
