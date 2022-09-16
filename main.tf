@@ -226,9 +226,7 @@ data "aws_iam_policy_document" "base" {
     conditions = {
       test = "StringLike"
       variable = "kms:ViaService"
-
-      values =
-      "kms:ViaService" = [
+      values = [
         "sqs.${data.aws_region.current.name}.amazonaws.com",
         "s3.${data.aws_region.current.name}.amazonaws.com"
       ]
