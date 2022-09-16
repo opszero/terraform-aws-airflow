@@ -13,6 +13,7 @@ AWS Managed Airflow
 |------|-------------|------|---------|:--------:|
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The bucket name for the dags. If not specified a `<name>-airflow` bucket is created | `string` | `""` | no |
 | <a name="input_dags_path"></a> [dags\_path](#input\_dags\_path) | The place for dags, requirements.txt, etc. | `string` | `"dags/"` | no |
+| <a name="input_environment_class"></a> [environment\_class](#input\_environment\_class) | Environment class for the cluster | `string` | `""` | no |
 | <a name="input_iam_policy_arns"></a> [iam\_policy\_arns](#input\_iam\_policy\_arns) | The policy arns that are added to the role attached to Airflow | `list` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the Airflow | `any` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | Security group ids | `any` | n/a | yes |
