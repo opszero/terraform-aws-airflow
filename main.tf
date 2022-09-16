@@ -99,7 +99,7 @@ data "aws_iam_policy_document" "assume" {
 }
 
 resource "aws_iam_role_policy_attachment" "this" {
-  count = length(var.iam_policy_arns)
+  count      = length(var.iam_policy_arns)
   role       = aws_iam_role.this.name
   policy_arn = var.iam_policy_arns[count.index]
 }
@@ -119,8 +119,8 @@ data "aws_iam_policy_document" "this" {
 data "aws_iam_policy_document" "base" {
   version = "2012-10-17"
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "airflow:PublishMetrics"
     ]
     resources = [
@@ -128,16 +128,16 @@ data "aws_iam_policy_document" "base" {
     ]
   }
   statement {
-    effect    = "Deny"
-    actions   = ["s3:ListAllMyBuckets"]
+    effect  = "Deny"
+    actions = ["s3:ListAllMyBuckets"]
     resources = [
       aws_s3_bucket.this.arn,
       "${aws_s3_bucket.this.arn}/*",
     ]
   }
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "s3:GetObject*",
       "s3:GetBucket*",
       "s3:List*"
@@ -148,15 +148,15 @@ data "aws_iam_policy_document" "base" {
     ]
   }
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "s3:GetAccountPublicAccessBlock"
     ]
     resources = ["*"]
   }
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "logs:CreateLogStream",
       "logs:CreateLogGroup",
       "logs:PutLogEvents",
@@ -170,8 +170,8 @@ data "aws_iam_policy_document" "base" {
     ]
   }
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "logs:DescribeLogGroups"
     ]
     resources = [
@@ -179,8 +179,8 @@ data "aws_iam_policy_document" "base" {
     ]
   }
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
       "cloudwatch:PutMetricData"
     ]
     resources = [
