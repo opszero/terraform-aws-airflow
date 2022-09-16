@@ -29,3 +29,8 @@ variable "tags" {
   description = "Tags to add to resources"
   default     = {}
 }
+
+variable "requirements_s3_path" {
+  description = "The relative path to the requirements.txt file on your Amazon S3 storage bucket"
+  default     = ""
+}
