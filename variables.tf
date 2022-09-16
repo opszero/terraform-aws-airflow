@@ -29,3 +29,8 @@ variable "tags" {
   description = "Tags to add to resources"
   default     = {}
 }
+
+variable "plugins_s3_path" {
+  description = "The relative path to the plugins.zip file on your Amazon S3 storage bucket"
+  default     = ""
+}
