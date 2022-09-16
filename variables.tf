@@ -29,3 +29,8 @@ variable "tags" {
   description = "Tags to add to resources"
   default     = {}
 }
+
+variable "environment_class" {
+  description = "Environment class for the cluster"
+  default     = ""
+}
