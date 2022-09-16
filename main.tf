@@ -9,8 +9,8 @@ locals {
 }
 
 resource "aws_mwaa_environment" "this" {
-  name = var.name
-  #environment_class =
+  name              = var.name
+  environment_class = var.environment_class
 
   execution_role_arn = aws_iam_role.this.arn
 
