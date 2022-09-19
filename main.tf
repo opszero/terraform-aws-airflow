@@ -9,8 +9,8 @@ locals {
 }
 
 resource "aws_mwaa_environment" "this" {
-  name = var.name
-  #environment_class =
+  name              = var.name
+  environment_class = var.environment_class
 
   execution_role_arn = aws_iam_role.this.arn
 
@@ -22,7 +22,8 @@ resource "aws_mwaa_environment" "this" {
   source_bucket_arn    = aws_s3_bucket.this.arn
   dag_s3_path          = var.dags_path
   requirements_s3_path = var.requirements_s3_path
-  # plugins_s3_path
+  plugins_s3_path.     = var.plugins_s3_path
+
 
   #   logging_configuration {
   #     dag_processing_logs {
@@ -181,10 +182,55 @@ data "aws_iam_policy_document" "base" {
   statement {
     effect = "Allow"
     actions = [
+      "s3:GetAccountPublicAccessBlock"
+    ]
+    resources = [
+      "*"
+    ]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
       "cloudwatch:PutMetricData"
     ]
     resources = [
       "*"
     ]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
+      "sqs:ChangeMessageVisibility",
+      "sqs:DeleteMessage",
+      "sqs:GetQueueAttributes",
+      "sqs:GetQueueUrl",
+      "sqs:ReceiveMessage",
+      "sqs:SendMessage"
+
+    ]
+    resources = [
+      "arn:aws:sqs:${data.aws_region.current.name}:*:airflow-celery-*"
+    ]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt",
+      "kms:DescribeKey",
+      "kms:GenerateDataKey*",
+      "kms:Encrypt"
+
+    ]
+    resources = [
+      "arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:key/*"
+    ]
+    condition {
+      test = "StringLike"
+      variable = "kms:ViaService"
+      values = [
+        "sqs.${data.aws_region.current.name}.amazonaws.com",
+        "s3.${data.aws_region.current.name}.amazonaws.com"
+      ]
+    }
   }
 }
