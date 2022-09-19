@@ -30,6 +30,11 @@ variable "tags" {
   default     = {}
 }
 
+variable "plugins_s3_path" {
+  description = "The relative path to the plugins.zip file on your Amazon S3 storage bucket"
+  default     = ""
+}
+
 variable "environment_class" {
   description = "Environment class for the cluster"
   default     = ""

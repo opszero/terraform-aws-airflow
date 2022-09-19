@@ -22,7 +22,7 @@ resource "aws_mwaa_environment" "this" {
   source_bucket_arn = aws_s3_bucket.this.arn
   dag_s3_path       = var.dags_path
   # requirements_s3_path -
-  # plugins_s3_path
+  plugins_s3_path = var.plugins_s3_path
 
   #   logging_configuration {
   #     dag_processing_logs {
