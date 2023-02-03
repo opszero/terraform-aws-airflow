@@ -22,7 +22,7 @@ resource "aws_mwaa_environment" "this" {
   source_bucket_arn    = aws_s3_bucket.this.arn
   dag_s3_path          = var.dags_path
   requirements_s3_path = var.requirements_s3_path
-  plugins_s3_path.     = var.plugins_s3_path
+  plugins_s3_path      = var.plugins_s3_path
 
 
   #   logging_configuration {
@@ -225,7 +225,7 @@ data "aws_iam_policy_document" "base" {
       "arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:key/*"
     ]
     condition {
-      test = "StringLike"
+      test     = "StringLike"
       variable = "kms:ViaService"
       values = [
         "sqs.${data.aws_region.current.name}.amazonaws.com",
