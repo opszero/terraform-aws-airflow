@@ -6,7 +6,8 @@ AWS Managed Airflow
 Notes: Do not use [AWS Managed Workflows for Apache
 Airflow](https://aws.amazon.com/managed-workflows-for-apache-airflow/) it is
 both expensive and finicky. Check out
-[airbase](https://github.com/opszero/airbase) instead.
+[airbase](https://github.com/opszero/airbase) instead to install AIrflow
+on Kubernetes.
 ## Providers
 
 | Name | Version |
@@ -22,6 +23,7 @@ both expensive and finicky. Check out
 | <a name="input_iam_policy_arns"></a> [iam\_policy\_arns](#input\_iam\_policy\_arns) | The policy arns that are added to the role attached to Airflow | `list` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the Airflow | `any` | n/a | yes |
 | <a name="input_plugins_s3_path"></a> [plugins\_s3\_path](#input\_plugins\_s3\_path) | The relative path to the plugins.zip file on your Amazon S3 storage bucket | `string` | `""` | no |
+| <a name="input_requirements_s3_path"></a> [requirements\_s3\_path](#input\_requirements\_s3\_path) | The relative path to the requirements.txt file on your Amazon S3 storage bucket | `string` | `""` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | Security group ids | `any` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Private subnet ids | `any` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to add to resources | `map` | `{}` | no |
