@@ -8,6 +8,15 @@ Airflow](https://aws.amazon.com/managed-workflows-for-apache-airflow/) it is
 both expensive and finicky. Check out
 [airbase](https://github.com/opszero/airbase) instead to install AIrflow
 on Kubernetes.
+# Pro Support
+
+<a href="https://www.opszero.com"><img src="http://assets.opszero.com.s3.amazonaws.com/images/opszero_11_29_2016.png" width="300px"/></a>
+
+[opsZero provides additional support](https://www.opszero.com/terraform) for our modules including:
+
+- Email support
+- Zoom Calls
+- Implementation Guidance
 ## Providers
 
 | Name | Version |
